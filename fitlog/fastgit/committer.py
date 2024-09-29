@@ -302,8 +302,8 @@ class Committer:
                 return Info(1, "Error: Have not set the work directory")
             work_dir = self.work_dir
         try:
-            master = os.path.join(work_dir, *"/.fitlog/logs/refs/heads/master".split('/'))
-            with open(master, "r", encoding='utf8') as fin:
+            main = os.path.join(work_dir, *"/.fitlog/logs/refs/heads/main".split('/'))
+            with open(main, "r", encoding='utf8') as fin:
                 lines = fin.readlines()
             commit_ids = []
             for line in lines:
@@ -486,8 +486,8 @@ class Committer:
                 if step > max_step or work_dir == os.path.abspath(os.sep):
                     break
                 step += 1
-            master = os.path.join(work_dir, *"/.git/logs/refs/heads/master".split('/'))
-            return Committer._read_id_from_file(master)
+            main = os.path.join(work_dir, *"/.git/logs/refs/heads/main".split('/'))
+            return Committer._read_id_from_file(main)
         except FileNotFoundError:
             return Info(1, "Error: Some error occurs")
     
@@ -502,8 +502,8 @@ class Committer:
             work_dir = '.'
         work_dir = os.path.abspath(work_dir)
         try:
-            master = os.path.join(work_dir, *"/.fitlog/logs/refs/heads/master".split('/'))
-            return Committer._read_id_from_file(master)
+            main = os.path.join(work_dir, *"/.fitlog/logs/refs/heads/main".split('/'))
+            return Committer._read_id_from_file(main)
         except FileNotFoundError:
             return Info(1, "Error: Some error occurs")
     
